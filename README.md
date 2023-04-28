@@ -5,8 +5,9 @@
 
 ## 使用步骤
 
-### 1、添加@EnableSysLog
-启动类上使用@EnableSysLog开启日志功能
+#### 1、添加@EnableSysLog
+
+###### 启动类上使用@EnableSysLog开启日志功能
 ```java
 @EnableSysLog
 public class Application {
@@ -16,11 +17,35 @@ public class Application {
 }
 ```
 
-### 2、添加@SysLog
-方法上使用@SysLog开启打印
+#### 2、添加@SysLog
+
+###### 开启打印
 ```java
 @SysLog
 public List<String> getList(String a, int b) {
+    return new ArrayList();
+}
+```
+
+###### 打印第n个参数
+```java
+@SysLog(param = "#p2", performance = true)
+public List<String> getList(UserInfo userInfo) {
+    return new ArrayList();
+}
+```
+
+###### 打印对象参数内属性
+```java
+@SysLog(param = "#userInfo.name + #userInfo.sex", sizeLimit = 50, performance = true)
+public List<String> getList(UserInfo userInfo) {
+    return new ArrayList();
+}
+```
+
+```java
+@SysLog(param = "#userInfo.workList", performance = true)
+public List<String> getList(UserInfo userInfo) {
     return new ArrayList();
 }
 ```
@@ -39,4 +64,3 @@ public List<String> getList(String a, int b) {
 |group|default|日志分组|
 |operator|未定义|操作人|
 |performance|false|是否打印性能指标|
-
